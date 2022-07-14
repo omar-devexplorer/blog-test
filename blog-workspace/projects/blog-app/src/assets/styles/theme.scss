@@ -1,0 +1,87 @@
+@use "@angular/material" as mat;
+@import "@angular/material/theming";
+
+@include mat.core();
+
+$app-primary-palette: (
+  50: var(--palette-primary-50, #90eac1),
+  100: var(--palette-primary-100, #50de9d),
+  200: var(--palette-primary-200, #22b572),
+  300: var(--palette-primary-300, #1c925c),
+  400: var(--palette-primary-400, #17794c),
+  500: var(--palette-primary-500, #125f3c),
+  600: var(--palette-primary-600, #0d452c),
+  700: var(--palette-primary-700, #082c1b),
+  800: var(--palette-primary-800, #072316),
+  900: var(--palette-primary-900, #051a11),
+  A100: var(--palette-primary-A100),
+  A200: var(--palette-primary-A200),
+  A400: var(--palette-primary-A400),
+  A700: var(--palette-primary-A700),
+  contrast: (
+    50: var(--palette-primary-contrast-50),
+    100: var(--palette-primary-contrast-100),
+    200: var(--palette-primary-contrast-200),
+    300: var(--palette-primary-contrast-300),
+    400: var(--palette-primary-contrast-400),
+    500: var(--palette-primary-contrast-500),
+    600: var(--palette-primary-contrast-600),
+    700: var(--palette-primary-contrast-700),
+    800: var(--palette-primary-contrast-800),
+    900: var(--palette-primary-contrast-900),
+    A100: var(--palette-primary-contrast-A100),
+    A200: var(--palette-primary-contrast-A200),
+    A400: var(--palette-primary-contrast-A400),
+    A700: var(--palette-primary-contrast-A700),
+  ),
+);
+
+$app-accent-palette: (
+  50: var(--palette-accent-50, #fff3e0),
+  100: var(--palette-accent-100, #ffe0b2),
+  200: var(--palette-accent-200, #ffd6b8),
+  300: var(--palette-accent-300, #ffbe8f),
+  400: var(--palette-accent-400, #ffad71),
+  500: var(--palette-accent-500, #ff9b52),
+  600: var(--palette-accent-600, #ff8933),
+  700: var(--palette-accent-700, #ff7815),
+  800: var(--palette-accent-800, #ff720b),
+  900: var(--palette-accent-900, #ff6c00),
+  A100: var(--palette-accent-A100),
+  A200: var(--palette-accent-A200),
+  A400: var(--palette-accent-A400),
+  A700: var(--palette-accent-A700),
+  contrast: (
+    50: var(--palette-accent-contrast-50),
+    100: var(--palette-accent-contrast-100),
+    200: var(--palette-accent-contrast-200),
+    300: var(--palette-accent-contrast-300),
+    400: var(--palette-accent-contrast-400),
+    500: var(--palette-accent-contrast-500),
+    600: var(--palette-accent-contrast-600),
+    700: var(--palette-accent-contrast-700),
+    800: var(--palette-accent-contrast-800),
+    900: var(--palette-accent-contrast-900),
+    A100: var(--palette-accent-contrast-A100),
+    A200: var(--palette-accent-contrast-A200),
+    A400: var(--palette-accent-contrast-A400),
+    A700: var(--palette-accent-contrast-A700),
+  ),
+);
+
+$primary-palette: mat.define-palette($app-primary-palette);
+$accent-palette: mat.define-palette($app-accent-palette);
+$warn-palette: mat.define-palette(mat.$red-palette);
+
+$light-theme: mat.define-light-theme(
+  $primary-palette,
+  $accent-palette,
+  $warn-palette
+);
+
+@include mat.all-component-themes($light-theme);
+
+:root {
+  --primary-color: #03a9f4;
+  --accent-color: #ff9b52;
+}

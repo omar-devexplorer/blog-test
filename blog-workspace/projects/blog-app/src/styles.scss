@@ -1,4 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@import "src/assets/styles/theme.scss";
+@import "src/assets/styles/typography.scss";
+@import "src/assets/styles/breakpoints.scss";
+@import "src/assets/styles/scrollbar.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+img,
+video {
+  display: block;
+}

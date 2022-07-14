@@ -1,0 +1,23 @@
+@use "@angular/material" as mat;
+
+@import "@angular/material/theming";
+
+$app-typography: mat.define-typography-config(
+  $font-family: "'Roboto', 'Helvetica', sans-serif",
+  $body-1: mat.define-typography-level(1rem, 1.4, 400),
+  $body-2: mat.define-typography-level(1rem, 1.4, 400),
+  $button: mat.define-typography-level(1.15rem, 1, 500),
+  $input: mat.define-typography-level(1.25rem, 1, 400),
+  $headline: mat.define-typography-level(clamp(2.25rem, 4vw, 4.25rem), 1.4, 700),
+  $title: mat.define-typography-level(clamp(3.25rem, 6.25vw, 6.25rem), 1.1, 400),
+  $subheading-2:
+    mat.define-typography-level(clamp(1.75rem, 2.25vw, 2.25rem), 1.2, 400),
+);
+
+@include mat.all-component-typographies($app-typography);
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
