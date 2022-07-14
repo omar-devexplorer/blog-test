@@ -59,6 +59,7 @@
               "projects/blog-app/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/blog-app/src/styles.scss"
             ],
             "scripts": []
@@ -127,6 +128,7 @@
               "projects/blog-app/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/blog-app/src/styles.scss"
             ],
             "scripts": []
