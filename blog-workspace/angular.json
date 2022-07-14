@@ -3,5 +3,36 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "blog-lib": {
+      "projectType": "library",
+      "root": "projects/blog-lib",
+      "sourceRoot": "projects/blog-lib/src",
+      "prefix": "way",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/blog-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/blog-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/blog-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/blog-lib/src/test.ts",
+            "tsConfig": "projects/blog-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/blog-lib/karma.conf.js"
+          }
+        }
+      }
+    }
   }
 }
