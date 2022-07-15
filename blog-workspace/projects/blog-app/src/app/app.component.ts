@@ -2,7 +2,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<router-outlet></router-outlet>`,
+  template: `
+    <app-header [appTitle]="appTitle"></app-header>
+    <router-outlet></router-outlet>
+    <app-footer [appTitle]="appTitle"></app-footer>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {}
+export class AppComponent {
+  appTitle: string = 'Blogging';
+}

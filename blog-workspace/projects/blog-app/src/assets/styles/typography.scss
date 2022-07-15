@@ -4,14 +4,14 @@
 
 $app-typography: mat.define-typography-config(
   $font-family: "'Roboto', 'Helvetica', sans-serif",
-  $body-1: mat.define-typography-level(1rem, 1.4, 400),
-  $body-2: mat.define-typography-level(1rem, 1.4, 400),
-  $button: mat.define-typography-level(1.15rem, 1, 500),
-  $input: mat.define-typography-level(1.25rem, 1, 400),
-  $headline: mat.define-typography-level(clamp(2.25rem, 4vw, 4.25rem), 1.4, 700),
-  $title: mat.define-typography-level(clamp(3.25rem, 6.25vw, 6.25rem), 1.1, 400),
+  $body-1: mat.define-typography-level(clamp(16px, 1.25vw, 20px), 40px, 400),
+  $body-2: mat.define-typography-level(clamp(16px, 1.25vw, 20px), 40px, 400),
+  $button: mat.define-typography-level(20px, 1, 500),
+  $input: mat.define-typography-level(20px, 1, 400),
+  $headline: mat.define-typography-level(clamp(30px, 2.5vw, 40px), 46px, 700),
+  $title: mat.define-typography-level(clamp(20px, 2vw, 24px), 28px, 400),
   $subheading-2:
-    mat.define-typography-level(clamp(1.75rem, 2.25vw, 2.25rem), 1.2, 400),
+    mat.define-typography-level(clamp(24px, 1.9vw, 30px), 35px, 700),
 );
 
 @include mat.all-component-typographies($app-typography);

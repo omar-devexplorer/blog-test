@@ -1,0 +1,79 @@
+@import "src/assets/styles/breakpoints.scss";
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+#hero-section {
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+#content-section {
+  padding-top: 55px;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    color: #939393;
+  }
+
+  .content {
+    &__user {
+      margin: 24px 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 11px;
+      align-items: center;
+
+      img {
+        border-radius: 50%;
+      }
+
+      .user-info {
+        display: grid;
+        grid-template-rows: auto auto;
+        align-items: center;
+        line-height: 20px;
+
+        &__name {
+          font-size: 12px;
+        }
+
+        &__date {
+          font-size: 14px;
+          color: #8a8a8a;
+        }
+      }
+    }
+  }
+}
+
+#comments-section {
+  padding: 32px 0;
+
+  .comments {
+    margin-top: 16px;
+    padding-left: 27px;
+    border-left: solid 3px var(--accent-color);
+
+    &__header {
+      color: #017db5;
+    }
+
+    &__body {
+      margin-bottom: 8px;
+    }
+
+    &__action {
+      display: grid;
+      grid-template-columns: repeat(3, 40px);
+      gap: 6px;
+    }
+  }
+}

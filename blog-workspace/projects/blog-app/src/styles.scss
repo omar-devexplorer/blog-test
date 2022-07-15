@@ -24,3 +24,21 @@ img,
 video {
   display: block;
 }
+
+/* Global styles */
+section,
+#header {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr min(850px, calc(100% - 2rem)) 1fr;
+  grid-column-gap: 1rem;
+
+  & > * {
+    grid-column: 2;
+  }
+}
+
+.full-width {
+  width: 100%;
+  grid-column: 1 / -1 !important;
+}
