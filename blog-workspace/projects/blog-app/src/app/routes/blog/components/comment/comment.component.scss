@@ -1,0 +1,23 @@
+.comment {
+  margin-top: 16px;
+  padding-left: 27px;
+  border-left: solid 3px var(--accent-color);
+
+  &__header {
+    color: #017db5;
+  }
+
+  &__body {
+    margin-bottom: 8px;
+
+    span {
+      word-break: break-all;
+    }
+  }
+
+  &__action {
+    display: grid;
+    grid-template-columns: repeat(3, 40px);
+    gap: 6px;
+  }
+}

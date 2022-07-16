@@ -42,3 +42,12 @@ section,
   width: 100%;
   grid-column: 1 / -1 !important;
 }
+
+.comment-form-dialog {
+  border-radius: 2rem !important;
+  overflow: hidden !important;
+
+  .mat-dialog-container {
+    padding: 0 !important;
+  }
+}
