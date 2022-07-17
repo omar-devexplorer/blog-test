@@ -1,8 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { rawPost } from '../mocks/rawPost';
-import { Post } from 'blog-lib';
+import { Post, rawPost } from 'blog-lib';
 
 @Injectable({
   providedIn: 'root',
