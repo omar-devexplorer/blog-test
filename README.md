@@ -50,5 +50,5 @@ Confira esta lista de tarefas para te ajudar a julgar se a prova está pronta pa
 - [x] O botão de responder comentário abre ação de resposta e o comentário salvo é corretamente adicionado
 - [x] Clicar no nome de um usuário abre modal com suas informações
 - [x] Workspace Angular multiprojetos com, no mínimo, aplicação e biblioteca
-- [ ] A biblioteca possui ao menos 2 componentes, todos utilizados na aplicação
+- [x] A biblioteca possui ao menos 2 componentes, todos utilizados na aplicação
 - [ ] Os conjuntos de teste passam

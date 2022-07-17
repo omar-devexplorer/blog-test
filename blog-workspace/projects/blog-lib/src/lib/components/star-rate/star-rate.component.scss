@@ -1,0 +1,66 @@
+.star {
+  &__container {
+    position: relative;
+  }
+
+  &__rating {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    float: left;
+
+    &--back {
+      z-index: 2;
+    }
+
+    & > input {
+      display: none;
+    }
+
+    .star {
+      &--back {
+        opacity: 0.4;
+      }
+      &--front {
+        color: #e7a200;
+      }
+    }
+
+    & > label:before {
+      margin: 5px;
+      font-size: 1.75em;
+      display: inline-block;
+      content: "\2605";
+    }
+
+    & > .half:before {
+      content: "\2605";
+      position: absolute;
+    }
+
+    & > label {
+      color: #808080;
+      float: right;
+    }
+
+    & > input:checked ~ label,
+    &:not(:checked) > label:hover,
+    &:not(:checked) > label:hover ~ label {
+      color: #e7a200;
+    }
+
+    & > input:checked + label:hover,
+    & > input:checked ~ label:hover,
+    & > label:hover ~ input:checked ~ label,
+    selection & > input:checked ~ label:hover ~ label {
+      color: #ffd980;
+    }
+  }
+}
+
+fieldset,
+label {
+  margin: 0;
+  padding: 0;
+}

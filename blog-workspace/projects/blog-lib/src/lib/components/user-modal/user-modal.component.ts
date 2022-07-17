@@ -12,7 +12,7 @@ import { users } from '../../mocks/users';
 @Component({
   selector: 'way-user-modal',
   templateUrl: './user-modal.component.html',
-  styleUrls: ['./user-modal.component.css'],
+  styleUrls: ['./user-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserModalComponent implements OnInit {

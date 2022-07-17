@@ -1,0 +1,41 @@
+<div class="star__container">
+
+    <div class="star__rating star__rating--back">
+
+        <ng-container *ngFor="let star of stars">
+
+            <input
+                [id]="'star' + star"
+                [value]="star"
+                name="rating"
+                type="radio"
+                (click)="starHandler(star)"
+            />
+
+            <label
+                class="start star--back"
+                [for]="'star' + star"
+            >
+
+            </label>
+
+        </ng-container>
+
+    </div>
+
+    <div class="star__rating">
+
+        <ng-container *ngFor="let star of rate">
+
+            <label
+                class="star star--front"
+                [for]="'star' + star"
+            >
+
+            </label>
+
+        </ng-container>
+
+    </div>
+
+</div>
