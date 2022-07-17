@@ -1,0 +1,71 @@
+<mat-toolbar
+    class="header"
+    cdkDrag
+    cdkDragRootElement=".cdk-overlay-pane"
+>
+
+    <button
+        class="drag-handle-button"
+        mat-icon-button
+        type="button"
+        cdkDragHandle
+        aria-label="Arrastar"
+    >
+        <mat-icon> drag_indicator </mat-icon>
+
+    </button>
+
+    <span>Comentário</span>
+
+    <button
+        mat-icon-button
+        type="button"
+        mat-dialog-close
+        aria-label="Fechar"
+    >
+        <mat-icon>close</mat-icon>
+
+    </button>
+
+</mat-toolbar>
+
+<div class="user">
+
+    <div class="user__box">
+
+        <img
+            width="100"
+            height="100"
+            [src]="'/assets/images/avatar'+ user?.id + '.jpg'"
+            [alt]="user?.username"
+        >
+
+        <div class="user__info">
+
+            <span><b>Nome:</b> {{ user?.username }}</span>
+
+            <span><b>Membro desde:</b> {{ user?.memberSince | date }} </span>
+
+        </div>
+
+    </div>
+
+    <span><b>Amigos:</b></span>
+
+    <ng-container *ngIf="user?.friendIds?.length; else emptyFriends">
+
+        <span *ngFor="let friend of user?.friendIds">
+
+            <small>{{ friend | friendName }}</small>
+
+        </span>
+
+    </ng-container>
+
+    <ng-template #emptyFriends>
+
+        <span><small>Sem amigos por enquanto...</small></span>
+
+    </ng-template>
+
+</div>

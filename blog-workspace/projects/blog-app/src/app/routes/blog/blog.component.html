@@ -28,19 +28,21 @@
             {{ post.subtitle }}
         </h2>
 
-        <div class="content__author">
+        <a
+            class="content__author"
+            (click)="openUserModal(post.author?.id)"
+        >
 
             <img
                 width="50"
                 height="50"
-                src="/assets/images/avatar1.jpg"
+                [src]="'/assets/images/avatar'+ post.author?.id + '.jpg'"
                 [alt]="post.author?.username"
             >
 
             <div class="author-info">
 
                 <span class="author-info__name">
-
                     {{ post.author?.username }}
                 </span>
 
@@ -50,7 +52,7 @@
 
             </div>
 
-        </div>
+        </a>
 
         <article class="content__post">
 

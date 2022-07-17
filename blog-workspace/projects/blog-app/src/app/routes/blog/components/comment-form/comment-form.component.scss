@@ -18,7 +18,7 @@
 .content {
   padding: 2rem;
 
-  span {
+  .username {
     font-size: 18px;
     color: var(--primary-color);
   }
@@ -34,6 +34,7 @@
     }
 
     .action {
+      margin-top: 32px;
       display: grid;
       place-items: center;
 

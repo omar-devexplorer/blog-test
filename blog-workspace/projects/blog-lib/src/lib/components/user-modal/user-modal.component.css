@@ -1,0 +1,40 @@
+.header {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  z-index: 9;
+}
+
+.drag-handle-button {
+  cursor: move;
+}
+
+.mat-icon {
+  color: #808080;
+}
+
+.user {
+  padding: 2rem;
+  display: grid;
+  grid-auto-flow: row;
+}
+
+.user__box {
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+img {
+  border-radius: 50%;
+}
+
+.user__info {
+  display: grid;
+  grid-template-rows: auto auto;
+  align-items: center;
+}

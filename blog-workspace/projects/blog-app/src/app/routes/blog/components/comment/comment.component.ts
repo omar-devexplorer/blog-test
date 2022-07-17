@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { PostComment } from 'blog-lib';
+import { PostComment, UserModalComponent } from 'blog-lib';
 import { CommentFormComponent } from '../comment-form/comment-form.component';
 
 @Component({
@@ -22,10 +22,20 @@ export class CommentComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  openUserModal(userId: number | undefined): void {
+    this.dialog.open(UserModalComponent, {
+      data: { id: userId },
+      panelClass: 'dialog',
+      width: '900px',
+      maxWidth: '100vw',
+      height: 'auto',
+    });
+  }
+
   openCommentForm(comment: PostComment | undefined): void {
     this.dialog.open(CommentFormComponent, {
       data: { ...comment },
-      panelClass: 'comment-form-dialog',
+      panelClass: 'dialog',
       width: '900px',
       maxWidth: '100vw',
       height: 'auto',

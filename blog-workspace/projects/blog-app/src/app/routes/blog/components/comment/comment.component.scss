@@ -3,15 +3,16 @@
   padding-left: 27px;
   border-left: solid 3px var(--accent-color);
 
-  &__header {
+  &__user {
     color: #017db5;
+    cursor: pointer;
   }
 
   &__body {
     margin-bottom: 8px;
 
     span {
-      word-break: break-all;
+      word-break: break-word;
     }
   }
 

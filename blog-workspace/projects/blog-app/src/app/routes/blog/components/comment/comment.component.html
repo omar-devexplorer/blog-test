@@ -1,10 +1,13 @@
 <div class="comment">
 
-    <span class="comment__header">
+    <a
+        class="comment__user"
+        (click)="openUserModal(comment?.author?.id)"
+    >
         {{ comment?.author?.username }} -
         {{ comment?.timestamp | date }}, às
         {{ comment?.timestamp | date: 'shortTime' }}
-    </span>
+    </a>
 
     <div class="comment__body">
 

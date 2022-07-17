@@ -4,10 +4,11 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Subject, tap, takeUntil, map } from 'rxjs';
 
 import { BlogService } from '../../core/services/blog.service';
-import { Post, PostComment } from 'blog-lib';
+import { PostComment, User, UserModalComponent } from 'blog-lib';
 
 @Component({
   selector: 'app-blog',
@@ -21,7 +22,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   post$ = this.blogService.post$;
   comments: PostComment[] = [];
 
-  constructor(private blogService: BlogService) {}
+  constructor(private dialog: MatDialog, private blogService: BlogService) {}
 
   ngOnInit(): void {
     this.post$
@@ -58,6 +59,16 @@ export class BlogComponent implements OnInit, OnDestroy {
         ],
         []
       );
+  }
+
+  openUserModal(userId: number | undefined): void {
+    this.dialog.open(UserModalComponent, {
+      data: { id: userId },
+      panelClass: 'dialog',
+      width: '900px',
+      maxWidth: '100vw',
+      height: 'auto',
+    });
   }
 
   trackById(index: any, item: any): any {
