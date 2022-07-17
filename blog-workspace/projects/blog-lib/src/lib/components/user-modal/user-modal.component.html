@@ -52,11 +52,11 @@
 
     <span><b>Amigos:</b></span>
 
-    <ng-container *ngIf="user?.friendIds?.length; else emptyFriends">
+    <ng-container *ngIf="user?.friendNames?.length; else emptyFriends">
 
-        <span *ngFor="let friend of user?.friendIds">
+        <span *ngFor="let friend of user?.friendNames">
 
-            <small>{{ friend | friendName }}</small>
+            <small>{{ friend }}</small>
 
         </span>
 

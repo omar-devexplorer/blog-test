@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subject, tap, takeUntil, map } from 'rxjs';
+import { Subject, tap, takeUntil, map, take } from 'rxjs';
 
 import { BlogService } from '../../core/services/blog.service';
 import { PostComment, User, UserModalComponent } from 'blog-lib';
@@ -25,12 +25,22 @@ export class BlogComponent implements OnInit, OnDestroy {
   constructor(private dialog: MatDialog, private blogService: BlogService) {}
 
   ngOnInit(): void {
+    this.blogService
+      .getPost()
+      .pipe(
+        take(1),
+        tap((post) => {
+          this.blogService.changePost(post);
+        })
+      )
+      .subscribe();
+
     this.post$
       .pipe(
         map((post) => post.comments),
         tap((comments) => {
           if (comments) {
-            this.comments = this.createTree(comments, null);
+            this.comments = this.blogService.createTree(comments, null);
           }
         }),
         takeUntil(this.destroy$)
@@ -43,27 +53,41 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  createTree(comments: PostComment[], parent: number | null): PostComment[] {
-    return comments
-      .filter(
-        (comment: PostComment) =>
-          comment.respondsTo === parent || comment.respondsTo?.id === parent
+  openUserModal(userId: number | undefined): void {
+    if (!userId) return;
+
+    const user$ = this.blogService.getUser(userId);
+
+    user$
+      .pipe(
+        take(1),
+        tap((user: User) => this.findFriendsNames(user))
       )
-      .reduce(
-        (tree: any, comment: PostComment) => [
-          ...tree,
-          {
-            ...comment,
-            children: this.createTree(comments, comment.id),
-          },
-        ],
-        []
-      );
+      .subscribe();
   }
 
-  openUserModal(userId: number | undefined): void {
+  private findFriendsNames(user: User): void {
+    this.blogService
+      .getUsers()
+      .pipe(
+        tap((users) => {
+          if (!users) return;
+          let friendNames: any[] = [];
+
+          user.friendIds.forEach((friendId) => {
+            const friend = users.find((u) => u.id === friendId);
+            friendNames.push(friend?.username);
+          });
+
+          this.openDialog({ ...user, friendNames });
+        })
+      )
+      .subscribe();
+  }
+
+  private openDialog(user: User): void {
     this.dialog.open(UserModalComponent, {
-      data: { id: userId },
+      data: { ...user },
       panelClass: 'dialog',
       width: '900px',
       maxWidth: '100vw',

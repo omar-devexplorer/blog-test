@@ -1,39 +1,55 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject, take, tap } from 'rxjs';
 
-import { Post, rawPost } from 'blog-lib';
+import { Post, PostComment, User } from 'blog-lib';
 
 @Injectable({
   providedIn: 'root',
 })
-export class BlogService implements OnDestroy {
-  private post: BehaviorSubject<Post> = new BehaviorSubject<Post>(rawPost);
+export class BlogService {
+  private post: Subject<Post> = new Subject<Post>();
   post$: Observable<Post> = this.post.asObservable();
 
-  constructor() {}
+  private readonly url = 'http://localhost:3000';
 
-  ngOnDestroy(): void {
-    this.post.complete();
+  constructor(private http: HttpClient) {}
+
+  getPost(): Observable<Post> {
+    return this.http.get<Post>(`${this.url}/post`);
   }
 
-  replayComment(content: string, respondsTo: { id: number } | null): void {
-    const post = rawPost;
-    const comments = post.comments;
-    const id = comments?.length ? comments?.length + 1 : 0;
+  getUser(userId: number): Observable<User> {
+    return this.http.get<User>(`${this.url}/users/${userId}`);
+  }
 
-    const comment = {
-      id,
-      respondsTo,
-      author: {
-        id: 7,
-        username: 'José da Silva',
-      },
-      timestamp: '2022-07-16T19:50',
-      content,
-    };
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}/users`);
+  }
 
-    post.comments?.push(comment);
+  createComment(post: Post): Observable<Post> {
+    return this.http.post<Post>(`${this.url}/post`, post);
+  }
 
+  createTree(comments: PostComment[], parent: number | null): PostComment[] {
+    return comments
+      .filter(
+        (comment: PostComment) =>
+          comment.respondsTo === parent || comment.respondsTo?.id === parent
+      )
+      .reduce(
+        (tree: any, comment: PostComment) => [
+          ...tree,
+          {
+            ...comment,
+            children: this.createTree(comments, comment.id),
+          },
+        ],
+        []
+      );
+  }
+
+  changePost(post: Post): void {
     this.post.next({ ...post });
   }
 }

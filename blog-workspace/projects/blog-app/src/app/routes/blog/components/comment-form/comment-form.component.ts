@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { pipe, take, tap } from 'rxjs';
 
 import { BlogService } from 'projects/blog-app/src/app/core/services/blog.service';
 import { PostComment } from 'blog-lib';
@@ -47,12 +48,43 @@ export class CommentFormComponent implements OnInit {
   }
 
   replayComment(): void {
-    const respondsTo = {
-      id: this.comment.id,
-    };
+    this.blogService
+      .getPost()
+      .pipe(
+        tap((post) => {
+          if (!post) return;
 
-    const content = this.commentForm.value.content;
+          const comments = post.comments;
+          const id = comments?.length ? comments?.length + 1 : 0;
+          const respondsTo = {
+            id: this.comment.id,
+          };
+          const content = this.commentForm.value.content;
 
-    this.blogService.replayComment(content, respondsTo);
+          const comment = {
+            id,
+            respondsTo,
+            author: {
+              id: 7,
+              username: 'José da Silva',
+            },
+            timestamp: '2022-07-16T19:50',
+            content,
+          };
+
+          post.comments?.push(comment);
+
+          this.blogService
+            .createComment({ ...post })
+            .pipe(
+              take(1),
+              tap((post) => {
+                this.blogService.changePost(post);
+              })
+            )
+            .subscribe();
+        })
+      )
+      .subscribe();
   }
 }

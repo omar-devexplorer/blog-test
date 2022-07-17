@@ -5,5 +5,6 @@ export interface User {
   username: string;
   memberSince: string;
   friendIds: number[];
+  friendNames?: string[];
   posts: Post[];
 }

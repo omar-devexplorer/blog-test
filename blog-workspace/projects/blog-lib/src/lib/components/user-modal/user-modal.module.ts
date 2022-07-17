@@ -6,7 +6,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 
-import { FriendNameModule } from '../../pipes/friend-name/friend-name.module';
 import { UserModalComponent } from './user-modal.component';
 
 const modules = [
@@ -20,7 +19,7 @@ const modules = [
 
 @NgModule({
   declarations: [UserModalComponent],
-  imports: [...modules, FriendNameModule],
+  imports: [...modules],
   exports: [UserModalComponent],
 })
 export class UserModalModule {}

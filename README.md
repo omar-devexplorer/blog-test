@@ -51,4 +51,4 @@ Confira esta lista de tarefas para te ajudar a julgar se a prova está pronta pa
 - [x] Clicar no nome de um usuário abre modal com suas informações
 - [x] Workspace Angular multiprojetos com, no mínimo, aplicação e biblioteca
 - [x] A biblioteca possui ao menos 2 componentes, todos utilizados na aplicação
-- [ ] Os conjuntos de teste passam
+- [x] Os conjuntos de teste passam
