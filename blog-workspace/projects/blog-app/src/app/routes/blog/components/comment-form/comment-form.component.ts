@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { pipe, take, tap } from 'rxjs';
+import { take, tap } from 'rxjs';
 
 import { BlogService } from 'projects/blog-app/src/app/core/services/blog.service';
 import { PostComment } from 'blog-lib';
@@ -75,7 +75,7 @@ export class CommentFormComponent implements OnInit {
           post.comments?.push(comment);
 
           this.blogService
-            .createComment({ ...post })
+            .addComment({ ...post })
             .pipe(
               take(1),
               tap((post) => {

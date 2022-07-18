@@ -70,6 +70,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.blogService
       .getUsers()
       .pipe(
+        take(1),
         tap((users) => {
           if (!users) return;
           let friendNames: any[] = [];

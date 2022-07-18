@@ -34,7 +34,7 @@ export class BlogService {
       .pipe(catchError((err) => this.handleError(err)));
   }
 
-  createComment(post: Post): Observable<Post> {
+  addComment(post: Post): Observable<Post> {
     return this.http
       .post<Post>(`${this.url}/post`, post)
       .pipe(catchError((err) => this.handleError(err)));
@@ -64,7 +64,7 @@ export class BlogService {
 
   private handleError(err: any) {
     this.snackbar.open(
-      'Verifique se o server está ativo. Para ativar execute: "json-server --watch db.json" na pasta db. ' +
+      'Por favor, verifique se o server está ativo. Para ativar execute o comando: "json-server --watch db.json" (pasta db). Erro:  ' +
         err.message,
       'Ok'
     );
