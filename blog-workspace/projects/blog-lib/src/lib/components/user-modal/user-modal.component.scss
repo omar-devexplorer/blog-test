@@ -1,6 +1,3 @@
-@import "src/lib/styles/breakpoints.scss";
-@import "src/lib/styles/theme.scss";
-
 .header {
   display: grid;
   grid-auto-flow: column;
@@ -59,10 +56,6 @@
     gap: 32px;
     align-items: center;
     line-height: 24px;
-
-    @include media-breakpoint(isHandset) {
-      grid-template-columns: 1fr;
-    }
 
     &__row {
       display: grid;
