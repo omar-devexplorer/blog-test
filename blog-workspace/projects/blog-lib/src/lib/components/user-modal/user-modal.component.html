@@ -1,0 +1,195 @@
+<mat-toolbar
+    class="header"
+    cdkDrag
+    cdkDragRootElement=".cdk-overlay-pane"
+>
+
+    <button
+        class="drag-handle-button"
+        mat-icon-button
+        type="button"
+        cdkDragHandle
+        aria-label="Arrastar"
+    >
+        <mat-icon> drag_indicator </mat-icon>
+
+    </button>
+
+    <span>Usuário</span>
+
+    <button
+        mat-icon-button
+        type="button"
+        mat-dialog-close
+        aria-label="Fechar"
+    >
+        <mat-icon>close</mat-icon>
+
+    </button>
+
+</mat-toolbar>
+
+<div class="user">
+
+    <div class="user__info">
+
+        <img
+            width="100"
+            height="100"
+            [src]="'/assets/images/avatar'+ user?.id + '.jpg'"
+            [alt]="user?.username"
+        >
+
+        <div class="user__box">
+
+            <span><b>Nome:</b> {{ user?.username }}</span>
+
+            <span><b>Membro desde:</b> {{ user?.memberSince | date }} </span>
+
+        </div>
+
+    </div>
+
+    <div class="user__friends">
+
+        <span><b>Amigos:</b></span>
+
+        <div class="friend">
+
+            <div>
+
+                <ng-container *ngIf="user?.friendNames?.length; else emptyFriends">
+
+                    <div
+                        class="friend__row"
+                        *ngFor="let friend of user?.friendNames"
+                    >
+
+                        <span> <small>{{ friend }}</small> </span>
+
+                        <button
+                            mat-icon-button
+                            color="primary"
+                            [matTooltip]="'Enviar Mensagem para ' + friend"
+                            aria-label="Enviar Mensagem Amigo"
+                        >
+
+                            <mat-icon class="material-icons-outlined">maps_ugc</mat-icon>
+
+                        </button>
+
+                        <button
+                            mat-icon-button
+                            color="accent"
+                            [matTooltip]="'Remover ' + friend"
+                            aria-label="Remover Amigo"
+                        >
+
+                            <mat-icon class="material-icons-outlined">block</mat-icon>
+
+                        </button>
+
+                        <button
+                            mat-icon-button
+                            color="warn"
+                            [matTooltip]="'Reportar ' + friend"
+                            aria-label="Reportar Amigo"
+                        >
+
+                            <mat-icon class="material-icons-outlined">report</mat-icon>
+
+                        </button>
+
+                    </div>
+
+                </ng-container>
+
+                <ng-template #emptyFriends>
+
+                    <span><small>Sem amigos por enquanto...</small></span>
+
+                </ng-template>
+
+            </div>
+
+            <div>
+
+                <button
+                    mat-stroked-button
+                    color="primary"
+                    aria-label="Adicionar Amigo"
+                >
+
+                    <mat-icon class="material-icons-outlined">group_add</mat-icon>
+
+                    Adicionar Amigo
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="user__posts">
+
+        <ng-container *ngIf="user?.posts?.length; else emptyPosts">
+
+            <mat-tab-group mat-align-tabs="center">
+
+                <mat-tab
+                    [label]="'Post ' + post.id"
+                    *ngFor="let post of user?.posts"
+                >
+
+                    <div class="post">
+
+                        <span><small><b>Título: </b>{{ post.title }}</small></span>
+
+                        <span><small><b>Subtítulo: </b>{{ post.subtitle }}</small></span>
+
+                        <span>
+
+                            <small>
+                                <b>Conteúdo: </b>
+
+                                <span [innerHTML]="post.content.slice(0, 300) + '...'"></span>
+
+                            </small>
+
+                        </span>
+
+                    </div>
+
+                    <div class="action">
+
+                        <button
+                            mat-stroked-button
+                            color="primary"
+                            aria-label="Ver Post Completo"
+                        >
+
+                            <mat-icon class="material-icons-outlined">visibility</mat-icon>
+
+                            Ver Post {{post.id}}
+
+                        </button>
+
+                    </div>
+
+                </mat-tab>
+
+            </mat-tab-group>
+
+        </ng-container>
+
+        <ng-template #emptyPosts>
+
+            <span><small>Sem post por enquanto...</small></span>
+
+        </ng-template>
+
+    </div>
+
+</div>

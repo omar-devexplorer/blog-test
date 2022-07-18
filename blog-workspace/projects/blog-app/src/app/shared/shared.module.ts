@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
-import { LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
+import { LOCALE_ID } from '@angular/core';
 import localePt from '@angular/common/locales/pt';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -59,10 +59,6 @@ const modules = [
     {
       provide: LOCALE_ID,
       useValue: 'pt',
-    },
-    {
-      provide: DEFAULT_CURRENCY_CODE,
-      useValue: 'BRL',
     },
   ],
 })

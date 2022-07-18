@@ -1,0 +1,21 @@
+#content-section {
+  display: block;
+  background-color: #ffffff70;
+  background-image: linear-gradient(transparent, #fff),
+    url(/assets/images/header-image.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: screen;
+
+  .content {
+    min-height: calc(100vh - 64px - 40px);
+    display: grid;
+    place-items: center;
+
+    button {
+      padding: 4px 16px;
+      border-radius: 24px;
+    }
+  }
+}

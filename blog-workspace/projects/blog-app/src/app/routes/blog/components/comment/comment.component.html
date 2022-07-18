@@ -1,0 +1,67 @@
+<div class="comment">
+
+    <a
+        class="comment__user"
+        (click)="openUserModal(comment?.author?.id)"
+    >
+        {{ comment?.author?.username }} -
+        {{ comment?.timestamp | date }}, às
+        {{ comment?.timestamp | date: 'shortTime' }}
+    </a>
+
+    <div class="comment__body">
+
+        <span>
+            {{ comment?.content }}
+        </span>
+
+    </div>
+
+    <div class="comment__action">
+
+        <button
+            mat-icon-button
+            color="primary"
+            [matTooltip]="'Responder ' + comment?.author?.username"
+            aria-label="Responder Comentário"
+            (click)="openCommentForm(comment)"
+        >
+
+            <mat-icon class="material-icons-outlined">forum</mat-icon>
+
+        </button>
+
+        <button
+            mat-icon-button
+            color="accent"
+            [matTooltip]="'Compartilhar comentário'"
+            aria-label="Compartilhar Comentário"
+            (click)="shareComment(comment)"
+        >
+
+            <mat-icon class="material-icons-outlined">shared</mat-icon>
+
+        </button>
+
+        <button
+            mat-icon-button
+            color="warn"
+            [matTooltip]="'Reportar comentário de ' + comment?.author?.username"
+            aria-label="Reportar Comentário"
+            (click)="reportComment(comment)"
+        >
+
+            <mat-icon class="material-icons-outlined">report</mat-icon>
+
+        </button>
+
+    </div>
+
+    <app-comment
+        *ngFor="let comment of comment?.children; trackBy: trackById"
+        [comment]="comment"
+    >
+
+    </app-comment>
+
+</div>

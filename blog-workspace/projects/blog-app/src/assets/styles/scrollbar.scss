@@ -1,4 +1,4 @@
-@import "src/assets/styles/breakpoints.scss";
+@import "projects/blog-app/src/assets/styles/breakpoints.scss";
 
 @include media-breakpoint(isWeb) {
   ::-webkit-scrollbar {
@@ -7,10 +7,10 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #fff !important;
+    background-color: var(--primary-color) !important;
   }
 
   ::-webkit-scrollbar-track {
-    background-color: var(--primary-color) !important;
+    background-color: #fff !important;
   }
 }

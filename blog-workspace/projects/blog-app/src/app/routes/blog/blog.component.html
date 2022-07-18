@@ -1,1 +1,89 @@
-<p>blog works!</p>
+<section id="hero-section">
+
+    <picture class="full-width">
+
+        <img
+            width="100%"
+            height="493"
+            src="/assets/images/header-image.jpg"
+            alt="Banner Blogging"
+        >
+
+    </picture>
+
+</section>
+
+<section id="content-section">
+
+    <div
+        class="content"
+        *ngIf="post$ | async as post"
+    >
+
+        <h1>
+            {{ post.title }}
+        </h1>
+
+        <h2>
+            {{ post.subtitle }}
+        </h2>
+
+        <a
+            class="content__author"
+            (click)="openUserModal(post.author?.id)"
+        >
+
+            <img
+                width="50"
+                height="50"
+                [src]="'/assets/images/avatar'+ post.author?.id + '.jpg'"
+                [alt]="post.author?.username"
+            >
+
+            <div class="author-info">
+
+                <span class="author-info__name">
+                    {{ post.author?.username }}
+                </span>
+
+                <span class="author-info__date">
+                    {{ post.timestamp | date }}
+                </span>
+
+            </div>
+
+        </a>
+
+        <article class="content__post">
+
+            <div [innerHTML]="post.content">
+
+            </div>
+
+        </article>
+
+    </div>
+
+    <div class="action">
+
+        <span><small>Avaliar:</small></span>
+        <way-star-rate></way-star-rate>
+
+    </div>
+
+</section>
+
+<section id="comments-section">
+
+    <h3>
+        Comentários
+    </h3>
+
+    <app-comment
+        *ngFor="let comment of comments; trackBy: trackById"
+        [comment]="comment"
+    >
+
+    </app-comment>
+
+</section>

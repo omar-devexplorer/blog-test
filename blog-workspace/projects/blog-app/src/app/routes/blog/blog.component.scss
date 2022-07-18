@@ -1,0 +1,64 @@
+@import "projects/blog-app/src/assets/styles/breakpoints.scss";
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+#hero-section {
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+#content-section {
+  padding-top: 55px;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    color: #939393;
+  }
+
+  .content {
+    &__author {
+      margin: 24px 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 11px;
+      align-items: center;
+      cursor: pointer;
+
+      img {
+        border-radius: 50%;
+      }
+
+      .author-info {
+        display: grid;
+        grid-template-rows: auto auto;
+        align-items: center;
+        line-height: 20px;
+
+        &__name {
+          font-size: 12px;
+        }
+
+        &__date {
+          font-size: 14px;
+          color: #8a8a8a;
+        }
+      }
+    }
+  }
+
+  .action {
+    margin-bottom: 48px;
+  }
+}
+
+#comments-section {
+  padding: 32px 0;
+}
