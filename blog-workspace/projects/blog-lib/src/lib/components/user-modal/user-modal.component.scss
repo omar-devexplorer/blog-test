@@ -1,3 +1,6 @@
+@import "src/lib/styles/breakpoints.scss";
+@import "src/lib/styles/theme.scss";
+
 .header {
   display: grid;
   grid-auto-flow: column;
@@ -5,36 +8,93 @@
   align-items: center;
   background-color: transparent;
   z-index: 9;
-}
 
-.drag-handle-button {
-  cursor: move;
-}
+  span {
+    font-size: 22px;
+  }
 
-.mat-icon {
-  color: #808080;
+  .mat-icon {
+    color: #808080;
+  }
+
+  .drag-handle-button {
+    cursor: move;
+  }
 }
 
 .user {
-  padding: 2rem;
+  padding: 1rem 2rem 2rem 2rem;
   display: grid;
   grid-auto-flow: row;
+  line-height: 24px;
+
+  img {
+    border-radius: 50%;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  &__box {
+    display: grid;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__friends,
+  &__posts {
+    margin-top: 24px;
+    display: grid;
+    grid-auto-flow: row;
+  }
+
+  .friend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+    line-height: 24px;
+
+    @include media-breakpoint(isHandset) {
+      grid-template-columns: 1fr;
+    }
+
+    &__row {
+      display: grid;
+      grid-template-columns: 160px 40px 40px 40px;
+      gap: 2px;
+      align-items: center;
+    }
+  }
+
+  .post {
+    position: relative;
+    padding: 16px 16px 0 16px;
+    display: grid;
+    grid-auto-flow: row;
+    gap: 8px;
+  }
+
+  .action {
+    position: sticky;
+    bottom: 0;
+    padding-top: 8px;
+    display: grid;
+    place-items: center;
+  }
 }
 
-.user__box {
-  margin-bottom: 32px;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 32px;
-  align-items: center;
+.mat-stroked-button {
+  padding: 4px 16px;
+  border-radius: 24px;
+  font-size: 20px;
 }
 
-img {
-  border-radius: 50%;
-}
-
-.user__info {
-  display: grid;
-  grid-template-rows: auto auto;
-  align-items: center;
+.mat-tab-group {
+  overflow: hidden;
 }

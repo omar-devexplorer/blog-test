@@ -1,0 +1,16 @@
+@import "src/assets/styles/breakpoints.scss";
+
+@include media-breakpoint(isWeb) {
+  ::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color) !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #fff !important;
+  }
+}
